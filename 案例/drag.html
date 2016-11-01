@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>drag</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 150px;
+            height: 200px;
+            background-color: hotpink;
+            cursor: pointer;
+            position: absolute;
+        }
+        h3{
+            background-color: pink;
+            color: white;
+            display: inline;
+        }
+    </style>
+</head>
+<body>
+<h3>聪明机智又善良的心雨姐姐喜欢粉红色</h3>
+<div id="div1"></div>
+<script>
+    (function () {
+        var oDiv1=document.getElementById("div1");
+        oDiv1.onmousedown=function (e) {
+            e=e||window.event;
+            var iDisX=e.clientX-oDiv1.offsetLeft;
+            var iDisY=e.clientY-oDiv1.offsetTop;
+            document.onmousemove=function (e) {
+                e=e||window.event;
+                var Left=e.clientX-iDisX;
+                var Top=e.clientY-iDisY;
+                oDiv1.style.left=Left+"px";
+                oDiv1.style.top=Top+"px";
+                return false;
+            };
+        };
+        document.onmouseup=function () {
+            document.onmousemove=null;
+        }
+    })()
+</script>
+</body>
+</html>
