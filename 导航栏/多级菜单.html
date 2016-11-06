@@ -85,23 +85,30 @@
             </li>
         </ul>
     <script>
-        //下面的js也可以执行 但是IE6不兼容
-//        var oUl=document.getElementById("menu");
-//        var aLi=oUl.getElementsByTagName("li");
-//        for(var i=0 ;i<aLi.length;i++){
+
+        var oUl=document.getElementById("menu");
+        var aLi=oUl.getElementsByTagName("li");
+//        用.class获取元素的时候IE不兼容
+        for(var i=0 ;i<aLi.length;i++){
 //            if(aLi[i].className=="main-menu"){
-//                aLi[i].onmouseover=function () {
-//                    var aSub=this.getElementsByTagName("ul");
-//                    var oSub=aSub[0];
-//                    oSub.style.display='block';
-//                };
-//                aLi[i].onmouseout=function () {
-//                    var aSub=this.getElementsByTagName("ul");
-//                    var oSub=aSub[0];
-//                    oSub.style.display='none';
-//                }
+                aLi[i].onmouseover=function () {
+                    var aSub=this.getElementsByTagName("ul");
+                    var oSub=aSub[0];
+                    oSub.style.display='block';
+                };
+                aLi[i].onmouseout=function () {
+                    var aSub=this.getElementsByTagName("ul");
+                    var oSub=aSub[0];
+                    oSub.style.display='none';
+                };
 //            }
-//        }
+        }
+
+
+//        var a;
+//        console.log(a);
+//        var b = document.getElementById("asdfasf");
+//        console.log(b);
     </script>
     </body>
 </html>
