@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选项卡2</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        #container {
+            width: 420px;
+            height: 300px;
+            margin: 100px auto;
+        }
+
+        #tab li {
+            width: 120px;
+            height: 30px;
+            background-color: antiquewhite;
+            float: left;
+            margin: 0 10px;
+            text-align: center;
+            line-height: 30px;
+            color: blueviolet;
+            cursor: pointer;
+        }
+        #content {
+            /*width: 420px;*/
+            height: 270px;
+            border-top: 1px solid deeppink;
+            background-color: peachpuff;
+        }
+        #content div{
+            display: none;
+        }
+        #content .selected{
+            display: block;
+        }
+        #tab {
+            overflow: hidden;
+        }
+
+        #tab .selected {
+            background-color: coral;
+            color: white;
+        }
+
+        /*可以利用div把上面三个选项给包起来 解决塌陷问题*/
+        /*#container-top{*/
+        /*width: 420px;*/
+        /*height: 30px;*/
+        /*}*/
+    </style>
+</head>
+<body>
+<div id="container">
+    <!--<div id="container-top">-->
+    <ul id="tab">
+        <li class="selected">html</li>
+        <li>css</li>
+        <li>js</li>
+    </ul>
+    <!--</div>-->
+    <div id="content">
+        <div class="selected">aaa</div>
+        <div>bbb</div>
+        <div>ccc</div>
+    </div>
+</div>
+<script>
+//    var oContainer = document.getElementById("container");
+    var oTab = document.getElementById("tab");
+    var oContent = document.getElementById("content");
+    var aDiv = oContent.getElementsByTagName("div");
+    var aLi = oTab.getElementsByTagName("li");
+    for(var i=0;i<aLi.length;i++){
+        aLi[i].index = i;
+        aLi[i].onclick = function (){
+            for(var i=0;i<aLi.length;i++){
+                aLi[i].className = "";
+                aDiv[i].className = "";
+            }
+            this.className = "selected";
+            aDiv[this.index].className = "selected";
+        }
+    }
+</script>
+</body>
+</html>
