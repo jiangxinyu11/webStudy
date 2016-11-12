@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>无缝滚动</title>
+    <Style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            border: 3px dashed peru;
+            margin: 50px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        #content{
+            width: 440px;
+            height: 120px;
+            position: absolute;
+        }
+        #content li{
+            width: 105px;
+            height: 120px;
+            background-color: plum;
+            color: white;
+            font-size:50px;
+            text-align: center;
+            line-height: 120px;
+            float: left;
+            margin-right: 5px;
+        }
+        #arrows{
+            position: absolute;
+            left: 50%;
+            margin-left: -110px;
+            bottom: 10px;
+        }
+        #arrows span{
+            float: left;
+            width: 100px;
+            height: 30px;
+            background-color: pink;
+            color: purple;
+            margin-right: 20px;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    </Style>
+</head>
+<body>
+    <div id="container">
+        <ul id="content">
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="arrows">
+            <span id="left">&lt;&lt;向左</span>
+            <span id="right">向右&gt;&gt;</span>
+        </div>
+    </div>
+    <script>
+        var oContent = document.getElementById('content');
+        var aLi = oContent.getElementsByTagName('li');
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+        var speed = -2;
+        oContent.innerHTML = oContent.innerHTML + oContent.innerHTML;
+        oContent.style.width = aLi.length * (aLi[0].offsetWidth + 5) + 'px';
+        setInterval(function () {
+            oContent.style.left = oContent.offsetLeft + speed +'px';
+            if(oContent.offsetLeft <= -oContent.offsetWidth/2){
+                oContent.style.left = 0;
+            }
+            else if(oContent.offsetLeft >= 0){
+                oContent.style.left = -oContent.offsetWidth/2 + 'px';
+            }
+        },30);
+        oLeft.onmousedown = function () {
+            speed = -2;
+        };
+        oRight.onmousedown = function () {
+            speed = 2;
+        };
+    </script>
+</body>
+</html>
