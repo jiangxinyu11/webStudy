@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>轮播图-直接切换图片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 680px;
+            height: 344px;
+            background-color: aquamarine;
+            margin: 70px auto;
+            position: relative;
+        }
+        #tab{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+        }
+        #tab li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            color: white;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #tab .selected{
+            background-color: orange;
+        }
+        #content img{
+            display: none;
+        }
+        #content img.selected{
+            display: block;
+        }
+        #arrow{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+        }
+        #arrow span{
+            background-color: black;
+            color: white;
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="arrow">
+            <span>&lt;</span>
+            <span>&gt;</span>
+        </div>
+        <ul id="tab">
+            <li class="selected">1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+        <div id="content">
+            <img src="1.jpg" class="selected">
+            <img src="2.jpg" >
+            <img src="3.jpg" >
+            <img src="4.jpg" >
+        </div>
+    </div>
+    <script>
+
+    </script>
+</body>
+</html>
