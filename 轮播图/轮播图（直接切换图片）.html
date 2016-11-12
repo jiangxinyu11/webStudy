@@ -64,8 +64,8 @@
 <body>
     <div id="container">
         <div id="arrow">
-            <span>&lt;</span>
-            <span>&gt;</span>
+            <span id="left">&lt;</span>
+            <span id="right">&gt;</span>
         </div>
         <ul id="tab">
             <li class="selected">1</li>
@@ -80,5 +80,55 @@
             <img src="4.jpg" >
         </div>
     </div>
+    <script>
+        var oContent = document.getElementById('content');
+        var oTab = document.getElementById('tab');
+        var aImg = oContent.getElementsByTagName('img');
+        var aLi = oTab.getElementsByTagName('li');
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+        var iNow = 0; //记录当前显示的索引
+        var timer;
+        for(var i = 0;i < aLi.length;i++){
+            aLi[i].index = i;
+            aLi[i].onmouseover = function () {
+                change(this.index);
+                iNow = this.index;
+            };
+        }
+        oRight.onclick = function () {
+            iNow++;
+            iNow = iNow % aLi.length;
+            change(iNow);
+        };
+        oLeft.onclick = function () {
+            iNow--;
+            if(iNow == -1){
+                iNow = aLi.length - 1;
+            }
+            change(iNow)
+        };
+        timer = setInterval(function () {
+            oRight.onclick();
+        },1000);
+        oContent.onmouseover = function () {
+            clearTimeout(timer);
+        };
+        oContent.onmouseout = function () {
+            timer = setInterval(function () {
+                oRight.onclick();
+            },1000);
+        };
+
+        function change(iNow) {
+            for(var i = 0;i < aLi.length;i++){
+                aLi[i].className = '';
+                aImg[i].className = '';
+            }
+            aLi[iNow].className = 'selected';
+            aImg[iNow].className = 'selected';
+        }
+
+    </script>
 </body>
 </html>
