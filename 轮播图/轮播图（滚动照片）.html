@@ -2,7 +2,68 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>轮播图（滚动照片）</title>
+    <title>轮播图-直接切换图片</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 680px;
+            height: 344px;
+            background-color: aquamarine;
+            margin: 70px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #tab{
+            position: absolute;
+            right: 10px;
+            bottom: 10px;
+            z-index: 1;
+        }
+        #tab li{
+            float: left;
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            color: white;
+            margin-right: 5px;
+            text-align: center;
+            line-height: 20px;
+            cursor: pointer;
+        }
+        #tab .selected{
+            background-color: orange;
+        }
+        #content{
+            position: absolute;
+            left: 0;
+        }
+        #content img{
+            float: left;
+        }
+        #arrow{
+            position: absolute;
+            left: 10px;
+            bottom: 10px;
+            z-index: 1;
+        }
+        #arrow span{
+            background-color: black;
+            color: white;
+            float: left;
+            width: 20px;
+            height: 20px;
+            margin-right: 5px;
+            line-height: 20px;
+            text-align: center;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 <div id="container">
@@ -17,11 +78,64 @@
         <li>4</li>
     </ul>
     <div id="content">
-        <img src="1.jpg" class="selected">
-        <img src="2.jpg" >
-        <img src="3.jpg" >
-        <img src="4.jpg" >
+        <img src="图片/1.jpg" >
+        <img src="图片/2.jpg" >
+        <img src="图片/3.jpg" >
+        <img src="图片/4.jpg" >
     </div>
 </div>
+<script src="jslib.js"></script>
+<script>
+    window.onload = function () {
+        var oContent = document.getElementById('content');
+        var oTab = document.getElementById('tab');
+        var aImg = oContent.getElementsByTagName('img');
+        var aLi = oTab.getElementsByTagName('li');
+        var oLeft = document.getElementById('left');
+        var oRight = document.getElementById('right');
+        var iNow = 0; //记录当前显示的索引
+        var timer;
+        oContent.style.width = aImg[0].offsetWidth * aImg.length + 'px';
+        for(var i = 0;i < aLi.length;i++){
+            aLi[i].index = i;
+            aLi[i].onmouseover = function () {
+                change(this.index);
+                iNow = this.index;
+            };
+        }
+        oRight.onclick = function () {
+            iNow++;
+            iNow = iNow % aLi.length;
+            change(iNow);
+        };
+        oLeft.onclick = function () {
+            iNow--;
+            if(iNow == -1){
+                iNow = aLi.length - 1;
+            }
+            change(iNow)
+        };
+        timer = setInterval(function () {
+            oRight.onclick();
+        },1000);
+        oContent.onmouseover = function () {
+            clearTimeout(timer);
+        };
+        oContent.onmouseout = function () {
+            timer = setInterval(function () {
+                oRight.onclick();
+            },1000);
+        };
+
+        function change(iNow) {
+            for(var i = 0;i < aLi.length;i++){
+                aLi[i].className = '';
+            }
+            aLi[iNow].className = 'selected';
+            animate(oContent,{left:-aImg[0].offsetWidth * iNow})
+        }
+    }
+
+</script>
 </body>
 </html>
