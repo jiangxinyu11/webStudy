@@ -90,7 +90,7 @@
         var aLi=oUl.getElementsByTagName("li");
 //        用.class获取元素的时候IE不兼容
         for(var i=0 ;i<aLi.length;i++){
-//            if(aLi[i].className=="main-menu"){
+            if(aLi[i].className=="main-menu"){
                 aLi[i].onmouseover=function () {
                     var aSub=this.getElementsByTagName("ul");
                     var oSub=aSub[0];
@@ -101,7 +101,7 @@
                     var oSub=aSub[0];
                     oSub.style.display='none';
                 };
-//            }
+            }
         }
 
 
