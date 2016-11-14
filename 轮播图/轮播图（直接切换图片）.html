@@ -81,6 +81,7 @@
         </div>
     </div>
     <script>
+        var oContainer = document.getElementById('container');
         var oContent = document.getElementById('content');
         var oTab = document.getElementById('tab');
         var aImg = oContent.getElementsByTagName('img');
@@ -111,10 +112,10 @@
         timer = setInterval(function () {
             oRight.onclick();
         },1000);
-        oContent.onmouseover = function () {
+        oContainer.onmouseover = function () {
             clearTimeout(timer);
         };
-        oContent.onmouseout = function () {
+        oContainer.onmouseout = function () {
             timer = setInterval(function () {
                 oRight.onclick();
             },1000);

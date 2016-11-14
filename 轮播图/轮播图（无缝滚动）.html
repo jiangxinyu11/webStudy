@@ -96,6 +96,8 @@
         var oRight = document.getElementById('right');
         var iNow = 0; //记录当前显示的索引
         var timer;
+        var newImg = aImg[0].cloneNode();
+        oContent.appendChild(newImg);
         oContent.style.width = aImg[0].offsetWidth * aImg.length + 'px';
         for(var i = 0;i < aLi.length;i++){
             aLi[i].index = i;
@@ -106,13 +108,17 @@
         }
         oRight.onclick = function () {
             iNow++;
-            iNow = iNow % aLi.length;
+            if(iNow == aImg.length){
+                oContent.style.left = 0;
+                iNow = 1;
+            }
             change(iNow);
         };
         oLeft.onclick = function () {
             iNow--;
             if(iNow == -1){
-                iNow = aLi.length - 1;
+                oContent.style.left = -(aImg.length - 1) * aImg[0].offsetWidth + 'px';
+                iNow = aImg.length - 2;
             }
             change(iNow)
         };
@@ -132,7 +138,7 @@
             for(var i = 0;i < aLi.length;i++){
                 aLi[i].className = '';
             }
-            aLi[iNow].className = 'selected';
+            aLi[iNow == aImg.length - 1 ? 0 : iNow].className = 'selected';
             animate(oContent,{left:-aImg[0].offsetWidth * iNow})
         }
     }

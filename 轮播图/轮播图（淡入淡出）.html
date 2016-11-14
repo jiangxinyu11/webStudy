@@ -17,13 +17,12 @@
             background-color: aquamarine;
             margin: 70px auto;
             position: relative;
-            overflow: hidden;
         }
         #tab{
             position: absolute;
             right: 10px;
             bottom: 10px;
-            z-index: 1;
+            z-index: 99999;
         }
         #tab li{
             float: left;
@@ -39,18 +38,16 @@
         #tab .selected{
             background-color: orange;
         }
-        #content{
+        #content img{
             position: absolute;
             left: 0;
-        }
-        #content img{
-            float: left;
+            top: 0;
         }
         #arrow{
             position: absolute;
             left: 10px;
             bottom: 10px;
-            z-index: 1;
+            z-index: 99999;
         }
         #arrow span{
             background-color: black;
@@ -78,7 +75,7 @@
         <li>4</li>
     </ul>
     <div id="content">
-        <img src="图片/1.jpg" >
+        <img src="图片/1.jpg" class="selected">
         <img src="图片/2.jpg" >
         <img src="图片/3.jpg" >
         <img src="图片/4.jpg" >
@@ -86,57 +83,61 @@
 </div>
 <script src="jslib.js"></script>
 <script>
-    window.onload = function () {
-        var oContainer = document.getElementById('container');
-        var oContent = document.getElementById('content');
-        var oTab = document.getElementById('tab');
-        var aImg = oContent.getElementsByTagName('img');
-        var aLi = oTab.getElementsByTagName('li');
-        var oLeft = document.getElementById('left');
-        var oRight = document.getElementById('right');
-        var iNow = 0; //记录当前显示的索引
-        var timer;
-        oContent.style.width = aImg[0].offsetWidth * aImg.length + 'px';
-        for(var i = 0;i < aLi.length;i++){
-            aLi[i].index = i;
-            aLi[i].onmouseover = function () {
-                change(this.index);
-                iNow = this.index;
-            };
+    var oContainer = document.getElementById('container');
+    var oContent = document.getElementById('content');
+    var oTab = document.getElementById('tab');
+    var aImg = oContent.getElementsByTagName('img');
+    var aLi = oTab.getElementsByTagName('li');
+    var oLeft = document.getElementById('left');
+    var oRight = document.getElementById('right');
+    var iNow = 0; //记录当前显示的索引
+    var zIndex = 4;
+    var timer;
+    for(var j = 0;j < aImg.length;j++){
+        aImg[j].style.zIndex =aImg.length - j;
+    }
+    for(var i = 0;i < aLi.length;i++){
+        aLi[i].index = i;
+        aLi[i].onmouseover = function () {
+            change(this.index);
+            iNow = this.index;
+        };
+    }
+    oRight.onclick = function () {
+        iNow++;
+        iNow = iNow % aLi.length;
+        change(iNow);
+    };
+    oLeft.onclick = function () {
+        iNow--;
+        if(iNow == -1){
+            iNow = aLi.length - 1;
         }
-        oRight.onclick = function () {
-            iNow++;
-            iNow = iNow % aLi.length;
-            change(iNow);
-        };
-        oLeft.onclick = function () {
-            iNow--;
-            if(iNow == -1){
-                iNow = aLi.length - 1;
-            }
-            change(iNow)
-        };
+        change(iNow)
+    };
+    timer = setInterval(function () {
+        oRight.onclick();
+    },1000);
+    oContainer.onmouseover = function () {
+        clearTimeout(timer);
+    };
+    oContainer.onmouseout = function () {
         timer = setInterval(function () {
             oRight.onclick();
         },1000);
-        oContainer.onmouseover = function () {
-            clearTimeout(timer);
-        };
-        oContainer.onmouseout = function () {
-            timer = setInterval(function () {
-                oRight.onclick();
-            },1000);
-        };
+    };
 
-        function change(iNow) {
-            for(var i = 0;i < aLi.length;i++){
-                aLi[i].className = '';
-            }
-            aLi[iNow].className = 'selected';
-            animate(oContent,{left:-aImg[0].offsetWidth * iNow})
+    function change(iNow) {
+        for(var i = 0;i < aLi.length;i++){
+            aLi[i].className = '';
         }
+        aLi[iNow].className = 'selected';
+        var oImg = aImg[iNow];
+        oImg.style.opacity =0;
+        oImg.style.filter = 'alpha(opacity = 0)';
+        oImg.style.zIndex = ++zIndex;
+        animate(oImg,{opacity : 100});
     }
-
 </script>
 </body>
 </html>
