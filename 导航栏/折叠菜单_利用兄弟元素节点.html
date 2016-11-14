@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    ul{
+        list-style: none;
+    }
+    a{
+        text-decoration: none;
+    }
+    #menu .main-menu  {
+        background-color: green;
+        width: 100px;
+        line-height: 30px;
+        text-align: center;
+        border-bottom: 1px solid lawngreen;
+    }
+    #menu a{
+        color: white;
+    }
+    #menu .sub-menu li{
+        height: 30px;
+        width: 100px;
+        background-color: forestgreen;
+        line-height: 30px;
+        border-bottom: 1px solid gainsboro;
+        /*text-align: center;*/
+    }
+    #menu ul {
+        display: none;
+    }
+</style>
+<body>
+<ul id="menu">
+    <li class="main-menu">
+        <a href="#">Link1</a>
+        <ul class="sub-menu">
+            <li><a href="#">SubLink1</a></li>
+            <li><a href="#">SubLink2</a></li>
+            <li><a href="#">SubLink3</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <a href="#">Link1</a>
+        <ul class="sub-menu">
+            <li><a href="#">SubLink1</a></li>
+            <li><a href="#">SubLink2</a></li>
+            <li><a href="#">SubLink3</a></li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oUl=document.getElementById("menu");
+    var aLi=oUl.getElementsByTagName("li");
+    for(var i=0 ; i<aLi.length ; i++){
+        if (aLi[i].className=="main-menu"){
+            aLi[i].onclick=function(){
+                var asubmenu=this.getElementsByClassName("sub-menu")[0];
+                if(asubmenu.style.display == 'block'){
+                    asubmenu.style.display = 'none';
+                }
+                else {
+                    asubmenu.style.display = 'block';
+                }
+            }
+        }
+    }
+</script>
+</body>
+</html>
