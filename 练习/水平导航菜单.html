@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #ul{
+            width: 420px;
+            height: 30px;
+        }
+        #ul li{
+            width: 100px;
+            height: 30px;
+            float: left;
+            background-color: red;
+            color: white;
+            line-height: 30px;
+            text-align: center;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul">
+        <li>Link One</li>
+        <li>Link Two</li>
+        <li>Link Three</li>
+        <li>Link Four</li>
+    </ul>
+    <script>
+        var oUl = document.getElementById('ul');
+        var aLi = oUl.getElementsByTagName('li');
+        for(var i = 0;i<aLi.length;i++){
+            aLi[i].onmouseover = function () {
+                this.style.backgroundColor = 'green';
+            };
+            aLi[i].onmouseout = function () {
+                this.style.backgroundColor = 'red';
+            }
+        }
+    </script>
+</body>
+</html>
