@@ -58,19 +58,20 @@
 </ul>
 <script>
     var oUl=document.getElementById("menu");
-    var aLi=oUl.getElementsByTagName("li");
+    var aLi=oUl.children;
+    var aSubMenu = oUl.getElementsByTagName('ul');
     for(var i=0 ; i<aLi.length ; i++){
-        if (aLi[i].className=="main-menu"){
+        aLi[i].index = i;
+        aLi[i].bShow = false;
             aLi[i].onclick=function(){
-                var asubmenu=this.getElementsByClassName("sub-menu")[0];
-                if(asubmenu.style.display == 'block'){
-                    asubmenu.style.display = 'none';
+                var oSubMenu = aSubMenu[this.index];
+                if(this.bShow){
+                    oSubMenu.style.display = 'none';
+                }else {
+                    oSubMenu.style.display = 'block';
                 }
-                else {
-                    asubmenu.style.display = 'block';
-                }
+                this.bShow = !this.bShow;
             }
-        }
     }
 </script>
 </body>
