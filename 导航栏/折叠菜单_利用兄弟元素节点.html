@@ -15,32 +15,42 @@
     a{
         text-decoration: none;
     }
-    #menu .main-menu  {
-        background-color: green;
+    #menu .main-menu{
+
         width: 100px;
+        background: #000;
+    }
+    #menu h3{
+        width: 100%;
+        height: 30px;
+        text-align: center;
+        line-height: 30px;
+        color:#fff;
+    }
+
+    #menu .sub-menu{
+        display: none;
+    }
+
+    #menu .sub-menu li{
+        width: 100px;
+        height: 30px;
+        background: #ccc;
+        border-bottom: 1px solid #000;
+    }
+
+    #menu .sub-menu a{
+        width: 100px;
+        height: 30px;
+        display: block;
         line-height: 30px;
         text-align: center;
-        border-bottom: 1px solid lawngreen;
-    }
-    #menu a{
-        color: white;
-    }
-    #menu .sub-menu li{
-        height: 30px;
-        width: 100px;
-        background-color: forestgreen;
-        line-height: 30px;
-        border-bottom: 1px solid gainsboro;
-        /*text-align: center;*/
-    }
-    #menu ul {
-        display: none;
     }
 </style>
 <body>
 <ul id="menu">
     <li class="main-menu">
-        <a href="#">Link1</a>
+        <h3>Link1</h3>
         <ul class="sub-menu">
             <li><a href="#">SubLink1</a></li>
             <li><a href="#">SubLink2</a></li>
@@ -48,7 +58,7 @@
         </ul>
     </li>
     <li class="main-menu">
-        <a href="#">Link1</a>
+        <h3>Link2</h3>
         <ul class="sub-menu">
             <li><a href="#">SubLink1</a></li>
             <li><a href="#">SubLink2</a></li>
@@ -58,19 +68,24 @@
 </ul>
 <script>
     var oUl=document.getElementById("menu");
-    var aLi=oUl.getElementsByTagName("li");
-    for(var i=0 ; i<aLi.length ; i++){
-        if (aLi[i].className=="main-menu"){
-            aLi[i].onclick=function(){
-                var asubmenu=this.getElementsByClassName("sub-menu")[0];
-                if(asubmenu.style.display == 'block'){
-                    asubmenu.style.display = 'none';
-                }
-                else {
-                    asubmenu.style.display = 'block';
-                }
+    var aH3 = oUl.getElementsByTagName('h3');
+
+    for(var i=0 ; i<aH3.length ; i++){
+        aH3[i].onclick=function(){
+            if(next(this).style.display = 'block')
+            {
+                next(this).style.display = 'none'
+            }else{
+                next(this).style.display = 'block'
             }
+
         }
+    }
+    function next(element) {
+        do{
+            element = element.nextSibling;
+        }while(element && element.nodeType != 1);
+        return element;
     }
 </script>
 </body>
