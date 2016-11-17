@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>多级菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        /*#menu{*/
+            /*width: 315px;*/
+        /*}*/
+        #menu .main-menu {
+            float: left;
+            margin-right: 5px;
+            background-color: grey;
+
+        }
+        #menu .main-menu span{
+            width: 100px;
+            height: 30px;
+            display: block;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+        #menu .sub-menu{
+            display: none;
+        }
+        #menu .sub-menu li{
+            width: 100px;
+            height: 30px;
+            background-color: gainsboro;
+            border-bottom: 1px dashed black;
+        }
+        #menu .sub-menu a{
+            display: block;
+            width: 100%;
+            height: 100%;
+            text-indent: 5px;
+            line-height: 30px;
+            color: grey;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li class="main-menu">
+            <span>Link One</span>
+            <ul class="sub-menu">
+                <li><a href="#">Sub One</a></li>
+                <li><a href="#">Sub Two</a></li>
+                <li><a href="#">Sub Three</a></li>
+            </ul>
+        </li>
+        <li class="main-menu">
+            <span>Link Two</span>
+            <ul class="sub-menu">
+                <li><a href="#">Sub One</a></li>
+                <li><a href="#">Sub Two</a></li>
+                <li><a href="#">Sub Three</a></li>
+            </ul>
+        </li>
+        <li class="main-menu">
+            <span>Link Three</span>
+            <ul class="sub-menu">
+                <li><a href="#">Sub One</a></li>
+                <li><a href="#">Sub Two</a></li>
+                <li><a href="#">Sub Three</a></li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aLi = oMenu.getElementsByTagName('li');
+        for(var i = 0;i<aLi.length;i++){
+            if(aLi[i].className == 'main-menu'){
+                aLi[i].onmouseover = function () {
+                    this.style.backgroundColor = 'green';
+                    var oSubMenu = this.getElementsByTagName('ul')[0];
+                    oSubMenu.style.display = 'block';
+                };
+                aLi[i].onmouseout = function () {
+                    this.style.backgroundColor = 'gray';
+                    var oSubMenu = this.getElementsByTagName('ul')[0];
+                    oSubMenu.style.display = 'none';
+                };
+            }
+        }
+    </script>
+</body>
+</html>
