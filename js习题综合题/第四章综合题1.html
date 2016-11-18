@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>四、1</title>
+</head>
+<body>
+<!--<form action="form_action.asp" method="get">-->
+    <!--First name: <input type="text" name="fname" />-->
+    <!--Last name: <input type="text" name="lname" />-->
+    <!--<input type="submit" value="Submit" />-->
+<!--</form>-->
+<form>
+    请输入年龄：<input type="text" name="film" >
+    <input type="submit" value="提交" id="submit">
+</form>
+
+    <!--1.编写程序．通过用户输入的年龄判断是哪个年龄段的人
+    （儿童：年龄＜14；青少年：14<=年龄＜24；青年：24<年龄＜40;
+     中年：40＜=年龄＜60; 老年：年龄>=60），并在页面上输出判断结果。-->
+    <script>
+        var oAge = document.getElementsByName('film')[0];
+        var oSubmint = document.getElementById('submit');
+        oSubmint.onclick = function () {
+            var aAge = oAge.value;
+            if(aAge > 0 && aAge < 14){
+                document.write("该用户为儿童");
+            }else if(aAge >= 14 && aAge < 24){
+                document.write("该用户为青少年");
+            }else if(aAge > 24 && aAge < 40){
+                document.write("该用户为青年");
+            }else if(aAge >= 40 && aAge < 60){
+                document.write("该用户为中年");
+            }else if(aAge >= 60){
+                document.write("该用户为老年");
+            }else {
+                document.write("您输入有误，请刷新页面重新输入年龄")
+            }
+            return false;
+        };
+
+    </script>
+</body>
+</html>
