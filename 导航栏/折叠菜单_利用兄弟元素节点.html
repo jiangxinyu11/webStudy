@@ -19,6 +19,7 @@
 
         width: 100px;
         background: #000;
+        cursor: pointer;
     }
     #menu h3{
         width: 100%;
@@ -72,11 +73,12 @@
 
     for(var i=0 ; i<aH3.length ; i++){
         aH3[i].onclick=function(){
-            if(next(this).style.display = 'block')
+            var aSubMenu = next(this);
+            if(aSubMenu.style.display == 'block')
             {
-                next(this).style.display = 'none'
+                aSubMenu.style.display = 'none'
             }else{
-                next(this).style.display = 'block'
+                aSubMenu.style.display = 'block'
             }
 
         }
