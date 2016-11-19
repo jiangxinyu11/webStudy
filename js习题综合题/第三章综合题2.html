@@ -14,10 +14,10 @@ var year = today.getFullYear();   //获取当天年份-->
     <script>
     var today = new Date();   //获取当天日期
     var year = today.getFullYear();//获取当天年份
-    if(year % 4 == 0 && year % 100 !== 0 || year % 400 == 0){
+    if((year % 4 == 0) && (year % 100 !== 0) || year % 400 == 0){
         document.write(year+"是闰年");
     }else{
-        document.write(year+"不是闰年")
+        document.write(year+"不是闰年");
     }
 </script>
 </body>
