@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>折叠菜单</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #menu{
+            width: 100px;
+            /*height: 60px;*/
+            cursor: pointer;
+        }
+        #menu li{
+            width: 100px;
+            /*height: 30px;*/
+            background: pink;
+            border-bottom: 1px solid deeppink;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+        }
+        #menu .main-menu span{
+            width: 100px;
+            height: 30px;
+        }
+        #menu .main-menu .sub-menu {
+            height: 30px;
+            border-bottom: white;
+            background: palegoldenrod;
+            color: gold;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <ul id="menu">
+        <li class="main-menu">
+            <span>Link One</span>
+            <ul class="sub-menu">
+                <li><span>Sub One</span></li>
+                <li><span>Sub Two</span></li>
+                <li><span>Sub Three</span></li>
+            </ul>
+        </li>
+        <li class="main-menu">
+            <span>Link Two</span>
+            <ul class="sub-menu">
+                <li><span>Sub One</span></li>
+                <li><span>Sub Two</span></li>
+                <li><span>Sub Three</span></li>
+            </ul>
+        </li>
+    </ul>
+    <script>
+        var oMenu = document.getElementById('menu');
+        var aMainMenu = oMenu.children;
+        for(var i=0; i<aMainMenu.length; i++){
+            aMainMenu[i].onclick = function () {
+                var oSubMenu = this.children[1];
+                if(oSubMenu.style.display == 'block')
+                {
+                    oSubMenu.style.display ='none';
+                }else{
+                    oSubMenu.style.display = 'block';
+                }
+            }
+        }
+    </script>
+</body>
+</html>
