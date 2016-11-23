@@ -60,20 +60,6 @@
         </ul>
     </li>
 </ul>
-<script>
-    var oMenu = document.getElementById('menu');
-    var aMainMenu = oMenu.children;
-    for(var i=0; i<aMainMenu.length; i++){
-        aMainMenu[i].onclick = function () {
-            var oSubMenu = this.children[1];
-            if(oSubMenu.style.display == 'block')
-            {
-                oSubMenu.style.display ='none';
-            }else{
-                oSubMenu.style.display = 'block';
-            }
-        }
-    }
-</script>
+
 </body>
 </html>
