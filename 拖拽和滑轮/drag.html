@@ -40,10 +40,11 @@
                 oDiv1.style.top=Top+"px";
                 return false;
             };
+            document.onmouseup=function () {
+                document.onmousemove=null;
+            }
         };
-        document.onmouseup=function () {
-            document.onmousemove=null;
-        }
+
     })()
 </script>
 </body>
