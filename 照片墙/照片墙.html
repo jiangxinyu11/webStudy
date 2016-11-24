@@ -58,6 +58,7 @@
             top : aImg[i].offsetTop
         };
     }
+    //函数onmouseup要放在onmousedown里面 才知道鼠标抬起时候的元素是点击的那个。 否则会有bug
     function drag(elem) {
         elem.onmousedown = function(e){
             e = e || window.event;
