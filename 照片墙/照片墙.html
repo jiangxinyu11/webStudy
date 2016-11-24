@@ -139,6 +139,24 @@
         }
         return collide[index];
     }
+    //找最近元素也可以用下面的函数 就是比较麻烦
+//    function nearest(elem) {
+//        if(collide.length == 1){
+//            return collide[0];
+//        }else{
+//            for(var i=1; i<collide.length; i++){
+//                var X1 = collide[i-1].offsetLeft - elem.offsetLeft;
+//                var Y1 = collide[i-1].offsetTop - elem.offsetTop;
+//                var X2 = collide[i].offsetLeft - elem.offsetLeft;
+//                var Y2 = collide[i].offsetTop - elem.offsetTop;
+//                if((Math.pow(X1,2) + Math.pow(Y1,2)) < (Math.pow(X2,2) + Math.pow(Y2,2))){
+//                    collide[i] = collide[i-1];
+//                }
+//            }
+//            return collide[i-1];
+//        }
+//    }
+
 </script>
 </body>
 </html>
