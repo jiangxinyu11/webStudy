@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 420px;
+            height: 300px;
+            margin: 100px auto;
+        }
+        #container #tab{
+            width: 420px;
+            height: 30px;
+            border-bottom: 1px solid green;
+        }
+        #container #tab li{
+            width: 120px;
+            height: 30px;
+            margin: 0 10px;
+            background-color: lightcyan;
+            line-height: 30px;
+            text-align: center;
+            float: left;
+            color: peru;
+        }
+        #container #content div{
+            width: 420px;
+            height: 270px;
+            background-color: lightgreen;
+            display: none;
+        }
+        #container #tab .selected{
+            background-color: lime;
+            color: white;
+        }
+        #container #content .selected{
+            display: block;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">html</li>
+        <li>css</li>
+        <li>js</li>
+    </ul>
+    <div id="content">
+        <div class="selected">aaa</div>
+        <div>bbb</div>
+        <div>ccc</div>
+    </div>
+</div>
+<script>
+    var oTab = document.getElementById('tab');
+    var oContent = document.getElementById('content');
+    var aLi = oTab.getElementsByTagName('li');
+    var aDiv = oContent.getElementsByTagName('div');
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].className = '';
+                aDiv[i].className = '';
+            }
+            this.className = 'selected';
+            aDiv[this.index].className = 'selected';
+        }
+
+    }
+</script>
+</body>
+</html>
