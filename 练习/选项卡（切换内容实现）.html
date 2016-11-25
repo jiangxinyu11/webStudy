@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 420px;
+            height: 300px;
+            margin: 100px auto;
+        }
+        #container #tab{
+            width: 420px;
+            height: 30px;
+            border-bottom: 1px solid red;
+        }
+        #container #tab li{
+            float: left;
+            width: 120px;
+            height: 100%;
+            background-color: burlywood;
+            color: crimson;
+            text-align: center;
+            line-height: 30px;
+            margin: 0 10px;
+        }
+        #container #content{
+            width: 420px;
+            height: 270px;
+            background-color: darksalmon;
+        }
+        #container #tab .selected{
+            background-color: brown;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <ul id="tab">
+        <li class="selected">html</li>
+        <li>css</li>
+        <li>js</li>
+    </ul>
+    <div id="content">aaa</div>
+</div>
+<script>
+    var data = ['aaa','bbb','ccc'];
+    var oContent = document.getElementById('content');
+    var oTab = document.getElementById('tab');
+    var aLi = oTab.getElementsByTagName('li');
+    for(var i=0; i<aLi.length; i++){
+        aLi[i].index = i;
+        aLi[i].onclick = function () {
+            for(var i=0; i<aLi.length; i++){
+                aLi[i].className = '';
+            }
+            this.className = 'selected';
+            oContent.innerHTML = data[this.index];
+        }
+    }
+</script>
+</body>
+</html>
