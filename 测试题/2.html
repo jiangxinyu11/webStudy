@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--2.有一行单词，空格为单词间的间隔，找出其中最长的单词和最短的单词。-->
+<form>
+    <input type="text" id="text">
+    <input type="submit" id="submit" value="提交">
+</form>
+<script>
+    var oSubmit = document.getElementById('submit');
+    var oText = document.getElementById('text');
+    oSubmit.onclick = function () {
+        var aText = oText.value;
+        var j = 0;
+        var k = 0;
+//        console.log(aText.length)
+        for(var i=0; i<aText.length; i++){
+            if(aText[i] == ' '){
+                k = i - k;
+                if(k > j){
+                    j = k;
+                }
+            }
+        }
+        console.log()
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--在一个字符串中找到第一个只出现一次的字符。如输入abaccdeff，则输出b-->
+<form>
+    <input type="text" id="text">
+    <input type="submit" id="submit" value="提交">
+</form>
+<script>
+    var oSubmit = document.getElementById('submit');
+    var oText = document.getElementById('text');
+    oSubmit.onclick = function () {
+            var aText = oText.value;
+//        console.log(aText.length);
+            for(var i=0; i<aText.length-1; i++){
+                var j;
+                for(var k=i+1; k<aText.length; k++){
+                    if(String(aText[i]) == String(aText[k])){
+                        j = 0;
+                        break;
+                    }
+                    j = 1;
+                }
+                if(j){
+                    console.log(aText[i]);
+                }
+            }
+        }
+        </script>
+</body>
+</html>

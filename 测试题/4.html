@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #div1{
+            width: 200px;
+            height: 100%;
+            background-color: pink;
+            float: left;
+        }
+        #div2{
+            height: 100%;
+            background-color: lightgreen;
+            float: left;
+        }
+    </style>
+</head>
+<body>
+<!--4.实现页面两列布局,要求左侧固定宽度200px，右侧根据屏幕宽度自适应。
+     （写出能想到的所有实现方法）-->
+<div id="div1"></div>
+<div id="div2"></div>
+<script>
+    var oDiv1 = document.getElementById('div1');
+    var oDiv2 = document.getElementById('div2');
+    oDiv2.style.width = ( window.innerWidth - oDiv1.offsetWidth ) + 'px';
+</script>
+</body>
+</html>
