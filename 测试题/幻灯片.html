@@ -4,36 +4,45 @@
     <meta charset="UTF-8">
     <title>幻灯片</title>
     <style>
-        *{
+        * {
             margin: 0;
             padding: 0;
         }
-        ul{
+
+        ul {
             list-style: none;
         }
-        #container{
+        body{
+            background-color: #666;
+        }
+        #container {
             width: 400px;
             height: 434px;
             margin: 52px auto;
         }
-        #big-pic{
+
+        #big-pic {
             width: 400px;
             height: 320px;
             position: relative;
         }
-        #big-img{
+
+        #big-img {
             width: 400px;
             height: 320px;
             position: relative;
         }
-        #big-img li{
+
+        #big-img li {
             width: 400px;
             height: 320px;
             position: absolute;
             left: 0;
             top: 0;
+            overflow: hidden;
         }
-        #left,#right{
+
+        #left, #right {
             width: 200px;
             height: 320px;
             position: absolute;
@@ -41,29 +50,35 @@
             opacity: 0;
             filter: alpha(Opacity=0);
         }
-        #left{
+
+        #left {
             left: 0;
             top: 0;
         }
-        #right{
+
+        #right {
             right: 0;
             top: 0;
         }
-        #left-btn,#right-btn{
+
+        #left-btn, #right-btn {
             width: 60px;
             height: 60px;
             position: absolute;
             top: 130px;
         }
-        #left-btn{
+
+        #left-btn {
             left: 5px;
-            background: url("img/btn.gif") ;
+            background: url("img/btn.gif");
         }
-        #right-btn{
+
+        #right-btn {
             right: 5px;
             background: url("img/btn.gif") bottom;
         }
-        #text{
+
+        #text {
             width: 400px;
             height: 30px;
             line-height: 30px;
@@ -76,35 +91,44 @@
             color: white;
 
         }
-        #text-left{
+
+        #text-left {
             float: left;
             margin-left: 10px;
         }
-        #text-right{
+
+        #text-right {
             float: right;
             margin-right: 10px;
         }
-        #small-pic{
+
+        #small-pic {
             width: 400px;
             height: 114px;
             background-color: #999;
             overflow: hidden;
+            position: relative;
         }
-        #small-img{
+
+        #small-img {
             width: 780px;
-            /*height: 114px;*/
+            height: 114px;
+            position: absolute;
         }
-        #small-img li{
+
+        #small-img li {
             width: 120px;
             height: 94px;
             margin: 10px 0 10px 10px;
             float: left;
             opacity: 0.6;
-            filter: alpha(Opacity=60);
+
         }
-        #small-img li img{
+
+        #small-img li img {
             width: 120px;
             height: 94px;
+            filter: alpha(Opacity=60);
         }
 
     </style>
@@ -113,12 +137,12 @@
 <div id="container">
     <div id="big-pic">
         <ul id="big-img">
-            <li style="z-index: 1"><img src="img/1.jpg" alt=""></li>
-            <li><img src="img/2.jpg" alt=""></li>
-            <li><img src="img/3.jpg" alt=""></li>
-            <li><img src="img/4.jpg" alt=""></li>
-            <li><img src="img/5.jpg" alt=""></li>
-            <li><img src="img/6.jpg" alt=""></li>
+            <li style="z-index: 1"><img src="img/1.jpg" alt="" title="111111"></li>
+            <li><img src="img/2.jpg" alt="" title="222222"></li>
+            <li><img src="img/3.jpg" alt="" title="333333"></li>
+            <li><img src="img/4.jpg" alt="" title="444444"></li>
+            <li><img src="img/5.jpg" alt="" title="555555"></li>
+            <li><img src="img/6.jpg" alt="" title="666666"></li>
         </ul>
         <div id="left">
             <span id="left-btn">
@@ -131,7 +155,7 @@
             </span>
         </div>
         <div id="text">
-            <span id="text-left">123456</span>
+            <span id="text-left">111111</span>
             <div id="text-right">
                 <span id="num">1</span>/<span>6</span>
             </div>
@@ -140,7 +164,7 @@
 
     <div id="small-pic">
         <ul id="small-img">
-            <li style="opacity: 1"><img src="img/1.jpg" alt=""></li>
+            <li style="opacity: 1"><img src="img/1.jpg"  alt=""></li>
             <li><img src="img/2.jpg" alt=""></li>
             <li><img src="img/3.jpg" alt=""></li>
             <li><img src="img/4.jpg" alt=""></li>
@@ -149,5 +173,95 @@
         </ul>
     </div>
 </div>
+<script src="jslib.js"></script>
+<script>
+    var oContainer = document.getElementById('container');
+    var oLeft = document.getElementById('left');
+    var oRight = document.getElementById('right');
+    var oLeftBtn = document.getElementById('left-btn');
+    var oRightBtn = document.getElementById('right-btn');
+    var oBigImg = document.getElementById('big-img');
+    var aBigImg = oBigImg.getElementsByTagName('li');
+    var oNum = document.getElementById('num');
+    var oSmallImg = document.getElementById('small-img');
+    var aSmallImg = oSmallImg.getElementsByTagName('li');
+    var oTextLeft = document.getElementById('text-left');
+    var iNow = 0;
+    var zIndex = 1;
+
+    oLeft.onmouseover = oRight.onmouseover = function () {
+//        this.style.opacity = 1;
+        animate(this, {opacity: 100})
+    };
+    oLeft.onmouseout = oRight.onmouseout = function () {
+//        this.style.opacity = 1;
+        animate(this, {opacity: 0})
+    };
+    oLeftBtn.onclick = oRightBtn.onclick = function () {
+        if(this == oRightBtn){
+            iNow++;
+            if(iNow == aBigImg.length){
+                iNow = 0;
+            }
+        }else{
+            iNow--;
+            if(iNow == -1){
+                iNow = aBigImg.length - 1;
+            }
+        }
+        changeImg(iNow);
+    };
+    function changeImg(index) {
+        aBigImg[index].style.zIndex = zIndex++;
+        aBigImg[index].style.height = 0;
+        animate(aBigImg[index],{height:320});
+        oNum.innerHTML = index + 1;
+        oTextLeft.innerHTML = aBigImg[index].getElementsByTagName('img')[0].title;
+
+        iNow = index;
+
+        for(var i=0; i<aSmallImg.length; i++){
+            aSmallImg[i].style.opacity = 0.6;
+        }
+        aSmallImg[index].style.opacity = 1;
+        if(index == 0){
+            animate(oSmallImg,{left:0});
+        }else if(index == aBigImg.length-1){
+            animate(oSmallImg,{left:-(aSmallImg[0].offsetWidth + 10)*(index - 2)});
+        }else{
+            animate(oSmallImg,{left:-(aSmallImg[0].offsetWidth + 10)*(index - 1)});
+        }
+
+    }
+    for(var i=0; i<aSmallImg.length; i++){
+        aSmallImg[i].index = i;
+        aSmallImg[i].onmouseover = function () {
+            this.style.opacity = 1;
+        };
+        aSmallImg[i].onmouseout = function () {
+            if(this.index != iNow){
+                this.style.opacity = 0.6;
+            }
+        };
+        aSmallImg[i].onclick = function () {
+            changeImg(this.index);
+        }
+    }
+    var timer = setInterval(function () {
+        oRightBtn.onclick();
+    },1500);
+    oContainer.onmouseover = function () {
+        clearInterval(timer);
+    };
+    oContainer.onmouseout = function () {
+        setInterval(function () {
+            oRightBtn.onclick();
+        },1500);
+    };
+
+
+
+</script>
 </body>
 </html>
+
