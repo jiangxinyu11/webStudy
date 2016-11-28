@@ -253,15 +253,11 @@
     oContainer.onmouseover = function () {
         clearInterval(timer);
     };
-    var newTimer=null;
     oContainer.onmouseout = function () {
-       console.log("aaa");
-       setInterval(function () {
+       timer = setInterval(function () {
             oRightBtn.onclick();
         },1500);
     };
-    console.log(newTimer);
-
 
 </script>
 </body>
