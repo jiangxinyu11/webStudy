@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #div1{
+            width: 500px;
+            height: 500px;
+            background-color: royalblue;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+<div id="div1"></div>
+</body>
+<script>
+    var oDiv1 = document.getElementById('div1');
+    var timer=setInterval(function () {
+        console.log("1111")
+    },1500);
+    oDiv1.onmouseover = function () {
+        clearInterval(timer);
+    };
+    oDiv1.onmouseout = function () {
+        setInterval(function () {
+            console.log("2222")
+        },1500);
+    };
+//    console.log(typeof timer+","+timer);
+</script>
+</html>
