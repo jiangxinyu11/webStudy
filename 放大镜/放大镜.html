@@ -67,16 +67,17 @@
         var oDrag = document.getElementById("drag");
         var oBigImg = document.getElementById("big-img");
         var oBigPic = document.getElementById("big-pic");
-        oSmallImg.onmouseover = function () {
+        var oMask = document.getElementById("mask");
+        oMask.onmouseover = function () {
             oDrag.style.display = 'block';
             oBigImg.style.display = 'block';
         };
 
-        oSmallImg.onmouseout = function () {
+        oMask.onmouseout = function () {
             oDrag.style.display = 'none';
             oBigImg.style.display = 'none';
         };
-        oSmallImg.onmousemove = function (e) {
+        oMask.onmousemove = function (e) {
             e = e || window.event;
             var left = e.clientX-oDrag.offsetWidth/2;
             var top = e.clientY-oDrag.offsetHeight/2;
