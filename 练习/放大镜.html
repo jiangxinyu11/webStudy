@@ -8,7 +8,39 @@
             margin: 0;
             padding: 0;
         }
-
+        img{
+            border: 0;
+        }
+        #small-img{
+            width: 400px;
+            height: 400px;
+            position: relative;
+            float: left;
+        }
+        #drag{
+            width: 200px;
+            height: 200px;
+            background-color: gainsboro;
+            position: absolute;
+            left: 0;
+            top: 0;
+            opacity: 0.5;
+            filter: Alpha(Opacity=50);
+            display: none;
+        }
+        #big-img{
+            width: 400px;
+            height: 400px;
+            float: left;
+            position: relative;
+            display: none;
+            overflow: hidden;
+        }
+        #big-img img{
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
     </style>
 </head>
 <body>
@@ -17,7 +49,7 @@
         <img src="images/small.jpg" alt="">
         <div id="drag"></div>
     </div>
-    <div>
+    <div id="big-img">
         <img src="images/big.jpg" alt="">
     </div>
 </div>
