@@ -36,11 +36,12 @@
             display: none;
             overflow: hidden;
         }
-        #big-img img{
+        #big-img #big-pic{
             position: absolute;
             left: 0;
             top: 0;
         }
+
     </style>
 </head>
 <body>
@@ -50,8 +51,47 @@
         <div id="drag"></div>
     </div>
     <div id="big-img">
-        <img src="images/big.jpg" alt="">
+        <img src="images/big.jpg" alt="" id="big-pic">
     </div>
 </div>
+<script>
+    var oSmallImg = document.getElementById('small-img');
+    var oDrag = document.getElementById('drag');
+    var oBigImg = document.getElementById('big-img');
+    var oBigPic = document.getElementById('big-pic');
+    oSmallImg.onmouseover = function () {
+        oDrag.style.display = 'block';
+        oBigImg.style.display = 'block';
+    };
+    oSmallImg.onmouseout = function () {
+        oDrag.style.display = 'none';
+        oBigImg.style.display = 'none';
+    };
+    oSmallImg.onmousemove = function (e) {
+        e = e || window.event;
+        var Left = e.clientX - oDrag.offsetWidth/2;
+        var Top = e.clientY - oDrag.offsetHeight/2;
+        var MaxLeft = oSmallImg.offsetWidth - oDrag.offsetWidth;
+        var MaxTop = oSmallImg.offsetHeight - oDrag.offsetHeight;
+        if(Left < 0){
+            Left = 0;
+        }
+        if(Left > MaxLeft){
+            Left = MaxLeft;
+        }
+        if(Top < 0){
+            Top = 0;
+        }
+        if(Top > MaxTop){
+            Top = MaxTop;
+        }
+        oDrag.style.left = Left + 'px';
+        oDrag.style.top = Top + 'px';
+        var scaleX = Left / MaxLeft;
+        var scaleY = Top / MaxTop;
+        oBigPic.style.left = -(oBigPic.offsetWidth - oBigImg.offsetWidth) * scaleX + 'px';
+        oBigPic.style.top = -(oBigPic.offsetHeight - oBigImg.offsetHeight) * scaleY + 'px';
+    }
+</script>
 </body>
 </html>
