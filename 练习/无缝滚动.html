@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        #container{
+            width: 400px;
+            height: 200px;
+            margin: 50px auto;
+            border: 5px dashed peru;
+            position: relative;
+            overflow: hidden;
+        }
+        #content{
+            width: 440px;
+            height: 120px;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #content li{
+            width: 105px;
+            height: 120px;
+            margin-right: 5px;
+            background-color: pink;
+            color: white;
+            font-size: 50px;
+            text-align: center;
+            line-height: 120px;
+            float: left;
+        }
+        #arrows{
+            width: 240px;
+            height: 30px;
+            position: absolute;
+            left: 90px;
+            bottom: 10px;
+        }
+        #arrows span{
+            width: 100px;
+            height: 30px;
+            margin-right: 20px;
+            background-color: peachpuff;
+            color: black;
+            float: left;
+            text-align: center;
+            line-height: 30px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="content">
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+        </ul>
+    </div>
+    <div id="arrows">
+        <span id="left">&lt;&lt;向左</span>
+        <span id="right">向右&gt;&gt;</span>
+    </div>
+</div>
+<script>
+    var oContent = document.getElementById('content');
+    var aLi = oContent.getElementsByTagName('li');
+    var oLeft = document.getElementById('left');
+    var oRight = document.getElementById('right');
+    var speed = -2;
+    oContent.innerHTML = oContent.innerHTML + oContent.innerHTML;
+    oContent.style.width = (aLi[0].offsetWidth + 5) * aLi.length + 'px';
+//    console.log(oContent.offsetWidth)
+    setInterval(function () {
+        oContent.style.left = oContent.offsetLeft + speed + 'px';
+        if(oContent.offsetLeft <= -oContent.offsetWidth/2){
+//            console.log(oContent.style.left);
+            oContent.style.left = 0;
+        }
+        else if(oContent.offsetLeft >= 0){
+            oContent.style.left = -oContent.offsetWidth/2 + 'px';
+        }
+    },30);
+    oLeft.onmouseover = function () {
+        speed = -2;
+    };
+    oRight.onmouseover = function () {
+      speed = 2;
+    };
+</script>
+</body>
+</html>
