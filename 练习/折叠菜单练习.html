@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+        #menu{
+            width: 100px;
+            height: 60px;
+            cursor: pointer;
+        }
+        #menu li{
+            width: 100px;
+            height: 30px;
+            line-height: 30px;
+            text-align: center;
+            border-bottom: 1px solid darkblue;
+        }
+        #menu h3{
+            color: blue;
+            background: cadetblue;
+        }
+        #menu .sub-menu {
+            display: none;
+        }
+        #menu .sub-menu li{
+            background-color: deepskyblue;
+            border-bottom: 1px solid brown;
+        }
+        #menu .sub-menu a{
+            color: white;
+        }
+    </style>
+</head>
+<body>
+<ul id="menu">
+    <li class="main-menu">
+        <h3>Link One</h3>
+        <ul class="sub-menu">
+            <li><a href="#">Sub One</a></li>
+            <li><a href="#">Sub Two</a></li>
+            <li><a href="#">Sub Three</a></li>
+        </ul>
+    </li>
+    <li class="main-menu">
+        <h3>Link Two</h3>
+        <ul class="sub-menu">
+            <li><a href="#">Sub One</a></li>
+            <li><a href="#">Sub Two</a></li>
+            <li><a href="#">Sub Three</a></li>
+        </ul>
+    </li>
+</ul>
+<script>
+    var oMenu = document.getElementById('menu');
+    var aH3 = oMenu.getElementsByTagName('h3');
+    var aSubMenu = oMenu.getElementsByTagName('ul');
+    for(var i=0; i<aH3.length; i++){
+        aH3[i].index = i;
+        aH3[i].bShow = false;
+        aH3[i].onclick = function () {
+            if(this.bShow){
+                aSubMenu[this.index].style.display = 'block';
+            }else{
+                aSubMenu[this.index].style.display = 'none';
+            }
+            this.bShow = !this.bShow;
+        }
+    }
+</script>
+</body>
+</html>
