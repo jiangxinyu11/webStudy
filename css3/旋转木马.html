@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转木马</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #state{
+            width: 1000px;
+            height: 500px;
+            background-color: peachpuff;
+            margin: 100px auto;
+            box-shadow: 10px 10px 5px peru;
+            position: relative;
+            -webkit-perspective: 800px;
+            -webkit-perspective-origin: 50% -15%;
+        }
+        #container{
+            width: 192px;
+            height: 120px;
+            position: absolute;
+            left: 50%;
+            margin-left: -96px;
+            top: 100px;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: transform 1s ease;
+        }
+        #container img{
+            width: 192px;
+            height: 120px;
+            position: absolute;
+            -webkit-transition: transform 1s ease-in-out;
+        }
+    </style>
+</head>
+<body>
+<div id="state">
+    <div id="container">
+        <!--<img src="images/1.jpg" alt="">-->
+        <!--<img src="images/2.jpg" alt="">-->
+        <!--<img src="images/3.jpg" alt="">-->
+        <!--<img src="images/4.jpg" alt="">-->
+        <!--<img src="images/5.jpg" alt="">-->
+        <!--<img src="images/6.jpg" alt="">-->
+        <!--<img src="images/7.jpg" alt="">-->
+        <!--<img src="images/8.jpg" alt="">-->
+        <!--<img src="images/9.jpg" alt="">-->
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+    var idx = 0;
+//    for(var i=0; i<aImg.length; i++){
+//        aImg[i].style.webkitTransform = 'rotateY('+ -i*40 +'deg) translateZ('+ (X+20) +'PX)' ;
+//    }
+
+    //1.页面加载以后第一次的旋转-1
+//    var j = 0;
+//    var timer = setInterval(function () {
+//        aImg[j].style.webkitTransitionDelay = (8-j) * 100 +'ms';
+//        aImg[j].style.webkitTransform = 'rotateY('+ -j*40 +'deg) translateZ('+ (X+20) +'PX)' ;
+//        if(j == 8){
+//            clearInterval(timer);
+//        }
+//        j++
+//    },0);
+
+    //页面加载以后的第一次旋转-2
+//    var j = 8;
+//    var timer = setInterval(function () {
+//        aImg[j].style.webkitTransform = 'rotateY('+ -j*40 +'deg) translateZ('+ (X+20) +'PX)' ;
+//        if(j == 0){
+//            clearInterval(timer);
+//        }
+//        j--
+//    },100);
+
+    //页面加载以后的第一次旋转-3
+//    for(var i=0; i<aImg.length; i++){
+//        (function (i) {
+//            setTimeout(function () {
+//                aImg[i].style.webkitTransform = 'rotateY('+ -i*40 +'deg) translateZ('+ (X+20) +'PX)' ;
+//            },(8-i)*100)
+//        })(i);
+//    }
+    //由于图片在网上下载会加载的比较慢 此代码是让所有图片都加载完在展示动画效果
+    var aa = 0;
+    for(var i=0; i<9; i++){
+        var oImg = new Image();
+        oImg.onload = function () {
+            aa++;
+            if(aa == 9){
+                for(var i=0; i<aImg.length; i++){
+                    (function (i) {
+                        setTimeout(function () {
+                            aImg[i].style.webkitTransform = 'rotateY('+ -i*40 +'deg) translateZ('+ (X+20) +'PX)' ;
+                        },(8-i)*100)
+                    })(i);
+                }
+            }
+        };
+        oImg.src = 'images/'+ (i+1) +'.jpg';
+        oContainer.appendChild(oImg);
+    }
+
+    var X = aImg[0].offsetWidth/2 / Math.tan(20 * 2*Math.PI/360);
+
+
+
+    oContainer.onclick = function () {
+        idx++;
+        oContainer.style.webkitTransform = 'rotateY('+ (-idx*40) +'deg)';
+//        if(idx == 9){
+//            idx = 0;
+//        }
+    }
+</script>
+</body>
+</html>
