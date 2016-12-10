@@ -4,6 +4,72 @@
     <meta charset="UTF-8">
     <title>奥运五环</title>
     <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        .circle,.circle::after{
+            width: 200px;
+            height: 200px;
+            border: 10px solid;
+            /*为什么加上display block*/
+            border-radius: 50%;
+            position: absolute;
+        }
+        .circle::after{
+            content: '';
+            left: -10px;
+            top: -10px;
+        }
+        .blue{
+            border-color: blue;
+            left: 0;
+            top: 0;
+        }
+        .blue::after{
+            border-color: blue;
+            z-index: 1;
+            border-bottom-color: transparent;
+        }
+        .yellow{
+            border-color: yellow;
+            left: 230px;
+            top: 0;
+        }
+        .yellow::after{
+            border-color: yellow;
+            z-index: 1;
+            border-left-color: transparent;
+        }
+        .red{
+            border-color: red;
+            left: 460px;
+            top: 0;
+        }
+        .red::after{
+            border-color: red;
+            z-index: 1;
+            border-left-color: transparent;
+        }
+        .green{
+            border-color: green;
+            left: 115px;
+            top: 130px;
+        }
+        .green::after{
+            border-color: green;
+        }
+        .black{
+            border-color: black;
+            left: 345px;
+            top: 130px;
+        }
+        .black::after{
+            border-color: black;
+            z-index: 1;
+            border-top-color: transparent;
+            border-right-color: transparent;
+        }
 
     </style>
 </head>
