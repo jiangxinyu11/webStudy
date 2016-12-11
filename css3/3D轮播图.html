@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>3D轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 680px;
+            height: 344px;
+            margin: 50px auto;
+            position: relative;
+            -webkit-perspective: 800px;
+        }
+        #container img{
+            position: absolute;
+            left: 0;
+            top: 0;
+            -webkit-transform-origin: bottom;
+            -webkit-transform: rotateX(180deg);
+            opacity: 0;
+        }
+        .show{
+            -webkit-animation: show 1s ease forwards;
+        }
+        @-webkit-keyframes show {
+            0%{}
+            50%{
+                -webkit-transform: rotateX(0deg);
+                opacity: 1;
+            }
+            56%{
+                -webkit-transform: rotateX(-14deg);
+                opacity: 1;
+            }
+            62%{
+                -webkit-transform: rotateX(12deg);
+                opacity: 1;
+            }
+            68%{
+                -webkit-transform: rotateX(-10deg);
+                opacity: 1;
+            }
+            74%{
+                -webkit-transform: rotateX(8deg);
+                opacity: 1;
+            }
+            80%{
+                -webkit-transform: rotateX(-6deg);
+                opacity: 1;
+            }
+            86%{
+                -webkit-transform: rotateX(4deg);
+                opacity: 1;
+            }
+            92%{
+                -webkit-transform: rotateX(-2deg);
+                opacity: 1;
+            }
+            98%{
+                -webkit-transform: rotateX(1deg);
+                opacity: 1;
+            }
+            100%{
+                -webkit-transform: rotateX(0deg);
+                opacity: 1;
+            }
+
+        }
+        .hide{
+            -webkit-animation: hide 1s ease forwards;
+        }
+        @-webkit-keyframes hide {
+            from{
+                -webkit-transform: rotateX(0deg);
+                opacity: 1;
+            }
+            to{
+                -webkit-transform: rotateX(-180deg);
+                opacity: 0;
+            }
+        }
+        #prev,#next{
+            width: 50px;
+            height: 50px;
+            background-color: gainsboro;
+            font-size: 40px;
+            text-align: center;
+            line-height: 50px;
+            position: absolute;
+            top: 50%;
+            margin-top: -50px;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+        #prev{
+            left: -100px;
+        }
+        #next{
+            right: -100px;
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <img class="show" src="图片/1.jpg" alt="">
+    <img src="图片/2.jpg" alt="">
+    <img src="图片/3.jpg" alt="">
+    <img src="图片/4.jpg" alt="">
+    <div id="prev">&lt;</div>
+    <div id="next">&gt;</div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var aImg = oContainer.getElementsByTagName('img');
+    var oPrev = document.getElementById('prev');
+    var oNext = document.getElementById('next');
+    var iNow = 0;
+    oNext.onclick = function () {
+        aImg[iNow].className = 'hide';
+        iNow++;
+        if(iNow == aImg.length){
+            iNow = 0;
+        }
+        aImg[iNow].className = 'show';
+    };
+    oPrev.onclick = function () {
+        aImg[iNow].className = 'hide';
+        iNow--;
+        if(iNow == -1){
+            iNow = aImg.length-1;
+        }
+        aImg[iNow].className = 'show';
+    };
+    var timer = setInterval(function () {
+        oNext.onclick();
+//        console.log(iNow);
+    },1700);
+    for(var i=0; i<aImg.length; i++){
+        aImg[i].onmouseover = function () {
+//        console.log(iNow);
+            clearInterval(timer);
+        };
+        aImg[i].onmouseout = function () {
+            timer = setInterval(function () {
+                oNext.onclick();
+            },1700);
+        }
+    }
+
+</script>
+</body>
+</html>
