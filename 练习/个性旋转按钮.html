@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>个性旋转按钮</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #container{
+            width: 49px;
+            height: 49px;
+            margin: 300px auto;
+            position: relative;
+        }
+        .btn{
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*-webkit-transform-origin: 0 0 ;*/
+            -webkit-transition: transform 1s ease;
+            /*-webkit-transform: rotate(360deg);*/
+        }
+    </style>
+</head>
+<body>
+<div id="container">
+    <div class="btn" id="one">
+        <img src="img/close.png" alt="">
+    </div>
+    <div class="btn" id="two">
+        <img src="img/full.png" alt="">
+    </div>
+    <div class="btn" id="three">
+        <img src="img/open.png" alt="">
+    </div>
+    <div class="btn" id="four">
+        <img src="img/prev.png" alt="">
+    </div>
+    <div class="btn" id="five">
+        <img src="img/refresh.png" alt="">
+    </div>
+    <div class="btn" id="home">
+        <img src="img/home.png" alt="">
+    </div>
+</div>
+<script>
+    var oContainer = document.getElementById('container');
+    var oHome = document.getElementById('home');
+    var aBtn = oContainer.getElementsByClassName('btn');
+    var a = 1;
+    oHome.onclick = function () {
+        if(a){
+            oHome.style.webkitTransform = 'rotate(-360deg)';
+//            oHome.style.webkitTransition = 'transform 1s ease';
+            for(var i=0; i<aBtn.length-1; i++){
+                aBtn[i].style.webkitTransitionDelay = (aBtn.length-2-i)*50 + 'ms';
+                aBtn[i].style.webkitTransform = 'translate('+ 200*Math.cos(-(180-i*22.5)*2*Math.PI/360) +'px,'+ 200*Math.sin(-(180-i*22.5)*2*Math.PI/360) +'px) rotate(-360deg)';
+            }
+//            aBtn[1].style.webkitTransform = 'translateX(-200px) rotate(-360deg)';
+//            aBtn[1].style.webkitTransition = 'transform 1s ease';
+//            a = 0;
+        }else{
+            oHome.style.webkitTransform = 'rotate(0deg)';
+            for(var j=0; j<aBtn.length-1; j++){
+                aBtn[j].style.webkitTransitionDuration = '1s';
+//                aBtn[j].style.WebkitTransformOrigin = '0 0';
+                aBtn[j].style.webkitTransitionDelay = (j*50) + 'ms';
+                aBtn[j].style.webkitTransform = 'translate(0px,0px) rotate(0deg)';
+            }
+//            oHome.style.webkitTransition = 'transform 1s ease';
+//            a = 1;
+        }
+        a = !a;
+    };
+    //    var k = 4;
+    //    var timer = setInterval(function () {
+    //        aBtn[k].style.webkitTransitionDelay = k*1000 + 'ms';
+    //        k--;
+    //        if(k == -1){
+    //            clearInterval(timer);
+    //        }
+    //    },0)
+
+    for(var j=0; j<aBtn.length-1; j++){
+        aBtn[j].state = true;
+        aBtn[j].onclick = function () {
+            if(this.state){
+                this.state = false;
+                var currTransform = this.style.webkitTransform;
+                this.style.webkitTransitionDuration = '0.3s';
+                this.style.opacity = 0.6;
+                this.style.WebkitTransformOrigin = 'center';
+                this.style.WebkitTransform = currTransform + ' scale(2)';
+                var that = this;
+                setTimeout(function () {
+                    that.style.WebkitTransform = currTransform;
+                    that.style.opacity = 1;
+                    that.state = true;
+                },300)
+            }
+        }
+    }
+</script>
+</body>
+</html>
