@@ -8,13 +8,30 @@
             margin: 0;
             padding: 0;
         }
-
+        #container{
+            width: 49px;
+            height: 49px;
+            margin: 300px auto;
+            position: relative;
+        }
+        .btn{
+            position: absolute;
+            left: 0;
+            top: 0;
+            /*-webkit-transform-origin: 0 0 ;*/
+            -webkit-transition: transform 1s ease;
+            /*-webkit-transform: rotate(360deg);*/
+        }
     </style>
 </head>
 <body>
 <div id="container">
-
-
+    <div class="btn" id="one">
+        <img src="img/close.png" alt="">
+    </div>
+    <div class="btn" id="two">
+        <img src="img/full.png" alt="">
+    </div>
     <div class="btn" id="three">
         <img src="img/open.png" alt="">
     </div>
