@@ -85,22 +85,7 @@
 
     for(var j=0; j<aBtn.length-1; j++){
         aBtn[j].state = true;
-        aBtn[j].onclick = function () {
-            if(this.state){
-                this.state = false;
-                var currTransform = this.style.webkitTransform;
-                this.style.webkitTransitionDuration = '0.3s';
-                this.style.opacity = 0.6;
-                this.style.WebkitTransformOrigin = 'center';
-                this.style.WebkitTransform = currTransform + ' scale(2)';
-                var that = this;
-                setTimeout(function () {
-                    that.style.WebkitTransform = currTransform;
-                    that.style.opacity = 1;
-                    that.state = true;
-                },300)
-            }
-        }
+
     }
 </script>
 </body>
