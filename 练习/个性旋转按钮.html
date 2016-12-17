@@ -53,7 +53,7 @@
     oHome.onclick = function () {
         if(a){
             oHome.style.webkitTransform = 'rotate(-360deg)';
-//            oHome.style.webkitTransition = 'transform 1s ease';
+
             for(var i=0; i<aBtn.length-1; i++){
                 aBtn[i].style.webkitTransitionDelay = (aBtn.length-2-i)*50 + 'ms';
                 aBtn[i].style.webkitTransform = 'translate('+ 200*Math.cos(-(180-i*22.5)*2*Math.PI/360) +'px,'+ 200*Math.sin(-(180-i*22.5)*2*Math.PI/360) +'px) rotate(-360deg)';
