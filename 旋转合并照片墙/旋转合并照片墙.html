@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>旋转合并照片墙</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        #container{
+            width: 100%;
+            height: 100%;
+            background: url(img/bg.jpg);
+            position: relative;
+        }
+        #container .img{
+            width: 125px;
+            height: 125px;
+            border: 5px solid white;
+            position: absolute;
+            left: -135px;
+            top: -135px;
+            -webkit-transition: all 1.5s ease;
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+
+</div>
+<div id="prev"></div>
+<div id="next"></div>
+<script>
+    var oContainer = document.getElementById('container');
+    var num = 0;
+    for(var a=0; a<24; a++){
+        var oImg = new Image();
+        oImg.onload = function () {
+            num++;
+            if(num == 48){
+                loadSuccess();
+            }
+        };
+        oImg.src = 'img/thumbs/'+ (a+1) +'.jpg'
+    }
+    for(var b=0; b<24; b++){
+        var oImg = new Image();
+        oImg.onload = function () {
+            num++;
+            if(num == 48){
+                loadSuccess();
+            }
+        };
+        oImg.src = 'img/'+ (b+1) +'.jpg'
+    }
+    var index = 0;
+    function loadSuccess() {
+        var colWidth = (oContainer.offsetWidth - 6*(125+10)) / 7;
+        var colHeight = (oContainer.offsetHeight - 4*(125+10)) / 5;
+        for(var i=0; i<4; i++){
+            for(var j=0; j<6; j++){
+                var oDiv = document.createElement('div');
+                oDiv.className = 'img';
+                oDiv.style.background = 'url(img/thumbs/'+ (index+1) + '.jpg)';
+//                oDiv.style.left = j * (135 + colWidth) + colWidth + 'px';
+//                oDiv.style.top = i * (135 + colHeight) + colHeight + 'px';
+                oDiv.pos = {
+                    left: j * (135 + colWidth) + colWidth,
+                        top: i * (135 + colHeight) + colHeight
+                };
+//                var rotateDeg = parseInt(Math.random() * 40 -20);
+//                oDiv.style.webkitTransform = 'rotate('+ rotateDeg +'deg)';
+                oContainer.appendChild(oDiv);
+                index++;
+            }
+
+        }
+        index--;
+        var aDiv = oContainer.getElementsByTagName('div');
+        var timer = setInterval(function () {
+            aDiv[index].style.left = aDiv[index].pos.left + 'px';
+            aDiv[index].style.top = aDiv[index].pos.top + 'px';
+            var rotateDeg = parseInt(Math.random() * 40 -20);
+            aDiv[index].style.webkitTransform = 'rotate('+ rotateDeg +'deg)';
+            index--;
+            if(index == -1){
+                clearInterval(timer);
+            }
+        },100)
+    }
+
+</script>
+</body>
+</html>
