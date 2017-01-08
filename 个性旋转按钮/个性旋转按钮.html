@@ -18,7 +18,7 @@
             position: absolute;
             left: 0;
             top: 0;
-            -webkit-transform-origin: 0 0 ;
+            /*-webkit-transform-origin: 0 0 ;*/
             -webkit-transition: transform 1s ease;
             /*-webkit-transform: rotate(360deg);*/
         }
@@ -65,7 +65,7 @@
             oHome.style.webkitTransform = 'rotate(0deg)';
             for(var j=0; j<aBtn.length-1; j++){
                 aBtn[j].style.webkitTransitionDuration = '1s';
-                aBtn[j].style.WebkitTransformOrigin = '0 0';
+//                aBtn[j].style.WebkitTransformOrigin = '0 0';
                 aBtn[j].style.webkitTransitionDelay = (j*50) + 'ms';
                 aBtn[j].style.webkitTransform = 'translate(0px,0px) rotate(0deg)';
             }
