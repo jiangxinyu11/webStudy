@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cookies</title>
+</head>
+<body>
+<script>
+    function setCookies(key,value,day) {
+        var str = key + "=" + value + "; ";
+        if(day){
+            var date = new Date();
+            date.setDate(date.getDate()+day);
+            str += 'expires=' + date;
+        }
+        document.cookie = str;
+    }
+
+</script>
+</body>
+</html>
