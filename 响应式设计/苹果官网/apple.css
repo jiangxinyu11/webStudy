@@ -69,6 +69,10 @@ ul{
     color: blue;
 }
 
+#medium-nav li a{
+    color: white;
+}
+
 .apple{
     background:url("img/apple.svg")no-repeat;
 }
