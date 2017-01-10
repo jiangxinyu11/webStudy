@@ -64,6 +64,10 @@ ul{
     height: 100%;
     display: block;
 }
+#medium-nav .pad li a:hover{
+    background-color: gainsboro;
+    color: blue;
+}
 
 .apple{
     background:url("img/apple.svg")no-repeat;
