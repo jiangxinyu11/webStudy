@@ -59,6 +59,11 @@ ul{
     border-bottom: 1px solid white;
     text-align: center;
 }
+.pad li a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
 
 .apple{
     background:url("img/apple.svg")no-repeat;
