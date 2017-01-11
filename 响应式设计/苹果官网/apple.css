@@ -55,7 +55,29 @@ ul{
     -webkit-box-orient: vertical;
     background-color: black;
 }
+.pad li{
+    border-bottom: 1px solid white;
+    text-align: center;
+}
+.pad li a{
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+#medium-nav .pad li a:hover{
+    background-color: gainsboro;
+    color: blue;
+}
 
+#medium-nav li a{
+    color: white;
+}
+.apple,#search,.shopping{
+    display: block;
+    width: 20px;
+    height: 44px;
+    margin: 0 auto;
+}
 .apple{
     background:url("img/apple.svg")no-repeat;
 }
