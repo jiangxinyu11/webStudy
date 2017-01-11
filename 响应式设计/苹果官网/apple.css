@@ -69,7 +69,15 @@ ul{
     color: blue;
 }
 
-
+#medium-nav li a{
+    color: white;
+}
+.apple,#search,.shopping{
+    display: block;
+    width: 20px;
+    height: 44px;
+    margin: 0 auto;
+}
 .apple{
     background:url("img/apple.svg")no-repeat;
 }
