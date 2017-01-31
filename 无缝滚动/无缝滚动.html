@@ -73,6 +73,10 @@
         var oLeft = document.getElementById('left');
         var oRight = document.getElementById('right');
         var speed = -2;
+        //    不可以这么添加 aLi是节点列表 具有数组的部分属性 不是一个数组
+        //    for(var i=0; i<aLi.length; i++){
+        //        aLi.push(aLi[i]);
+        //    }
         oContent.innerHTML = oContent.innerHTML + oContent.innerHTML;
         oContent.style.width = aLi.length * (aLi[0].offsetWidth + 5) + 'px';
         setInterval(function () {
