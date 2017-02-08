@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form>
+    你爱好的运动是？<input type="checkbox" id="CheckedAll" />全选/全不选<br/>
+    <input type="checkbox" name="items" value="足球"/>足球
+    <input type="checkbox" name="items" value="篮球"/>篮球
+    <input type="checkbox" name="items" value="羽毛球"/>羽毛球
+    <input type="checkbox" name="items" value="乒乓球"/>乒乓球<br/>
+    <input type="button" id="send" value="提　交"/>
+</form>
+<script src="../jquery-1.12.4.js"></script>
+<script>
+//    复选框checked初始值是false 如果输出所有复选框的checked的值的话 只会输出第一个
+//    $("[name='items']").each(function () {
+//        console.log(this.checked);
+//    });
+    $("input[name='items']").on('click',function () {
+//        console.log($(this).prop('checked'));
+        console.log($("[name='items']").prop('checked'));
+    })
+//        console.log($("[name='items']").prop('checked'));
+
+</script>
+</body>
+</html>
