@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+    <title></title>
+    <link href="css/default.css" rel="stylesheet" type="text/css" />
+    <link href="css/skin_0.css" rel="stylesheet" type="text/css" />
+    <!--<script type="text/javascript">-->
+    <!--$(function(){-->
+    <!--var $li =$("#skin li");-->
+    <!--$li.click(function(){-->
+    <!--switchSkin( this.id );-->
+    <!--});-->
+    <!--var cookie_skin = $.cookie( "MyCssSkin");-->
+    <!--if (cookie_skin) {-->
+    <!--switchSkin( cookie_skin );-->
+    <!--}-->
+    <!--});-->
+    <!--function switchSkin(skinName){-->
+    <!--$("#"+skinName).addClass("selected")                 //��ǰ<li>Ԫ��ѡ��-->
+    <!--.siblings().removeClass("selected");  //ȥ������ͬ��<li>Ԫ�ص�ѡ��-->
+    <!--$("#cssfile").attr("href","css/"+ skinName +".css"); //���ò�ͬƤ��-->
+    <!--$.cookie( "MyCssSkin" ,  skinName , { path: '/', expires: 10 });-->
+    <!--}-->
+    <!--</script>-->
+</head>
+<body>
+<ul id="skin">
+    <li id="skin_0" title="��ɫ" class="selected"></li>
+    <li id="skin_1" title="��ɫ"></li>
+    <li id="skin_2" title="��ɫ"></li>
+    <li id="skin_3" title="����ɫ"></li>
+    <li id="skin_4" title="��ɫ"></li>
+    <li id="skin_5" title="����ɫ"></li>
+</ul>
+
+<div id="div_side_0">
+    <div id="news">
+        <h1 class="skin0"></h1>
+    </div>
+</div>
+
+<div id="div_side_1">
+    <div id="game">
+        <h1 class="skin0"></h1>
+    </div>
+</div>
+<script src="../../../jquery-1.12.4.js"></script>
+<script>
+    $(function () {
+        $('#skin li').on('click',function () {
+//                alert($(this).index())
+            $(this).addClass('selected').siblings().removeClass('selected');
+            var index = $(this).index();
+            var str = "skin" + index;
+//                alert(str)
+            $('h1').attr('class',str);
+//                $('h1').removeClass().addClass(str);
+            $.cookie("color",this.id,{expires: 10});
+        });
+        var cookie_liId = $.cookie('color');
+        if(cookie_liId){
+            $('#'+cookie_liId).trigger('click');
+        }
+
+    });
+    $('li').on('click',function(){
+        $(this).addClass('selected').siblings().removeClass('selected');
+        $('h1').attr('class','title').addClass($(this).attr('id'));
+        $.cookie( "MyCssSkin" ,  $(this).attr('id') , {expires: 10 });
+    });
+
+</script>
+</body>
+</html>
