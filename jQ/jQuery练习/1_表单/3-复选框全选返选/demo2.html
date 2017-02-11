@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>demo2</title>
+</head>
+<body>
+<form>
+    你爱好的运动是？<input type="checkbox" id="CheckedAll" />全选/全不选<br/>
+    <input type="checkbox" name="items" value="足球"/>足球
+    <input type="checkbox" name="items" value="篮球"/>篮球
+    <input type="checkbox" name="items" value="羽毛球"/>羽毛球
+    <input type="checkbox" name="items" value="乒乓球"/>乒乓球<br/>
+    <input type="button" id="send" value="提　交"/>
+</form>
+<script src="../../../jquery-1.12.4.js"></script>
+<script>
+$(function () {
+    $('#CheckedAll').on('click',function () {
+//        if($(this).prop('checked')){
+//            $("[name='items']").each(function () {
+//                $(this).prop('checked',true);
+//            })
+//        }else{
+//            $("[name='items']").each(function () {
+//                $(this).prop('checked',false);
+//            })
+//        }
+        if(this.checked){
+            $("input[name='items']").prop('checked',true);
+        }else{
+            $("input[name='items']").prop('checked',false);
+        }
+    });
+    $("input[name='items']").on('click',function () {
+        var flag = true;
+        $("input[name='items']").each(function () {
+            if(!this.checked){
+                flag = false;
+            }
+        });
+        if(flag){
+            $('#CheckedAll').prop('checked',true);
+        }else{
+            $('#CheckedAll').prop('checked',false);
+        }
+    });
+
+    //全选
+//    $("#CheckedAll").click(function(){
+        //所有checkbox跟着全选的checkbox走。
+//        $('[name=items]:checkbox').attr("checked", this.checked );
+//    });
+//    $('[name=items]:checkbox').click(function(){
+        //定义一个临时变量，避免重复使用同一个选择器选择页面中的元素，提升程序效率。
+//        var $tmp=$('[name=items]:checkbox');
+        //用filter方法筛选出选中的复选框。并直接给CheckedAll赋值。
+//        $('#CheckedAll').attr('checked',$tmp.length==$tmp.filter(':checked').length);
+        /*
+         //一行做过多的事情需要写更多注释。复杂选择器还可能影响效率。因此不推荐如下写法。
+         $('#CheckedAll').attr('checked',!$('[name=items]:checkbox').filter(':not(:checked)').length);
+         */
+//    });
+
+    $('#send').on('click',function () {
+        var str = "你选中的是: \r\n";
+        $("input[name='items']:checked").each(function () {
+            str += $(this).val() + '\r\n';
+        });
+        alert(str);
+    });
+
+
+})
+</script>
+</body>
+</html>
