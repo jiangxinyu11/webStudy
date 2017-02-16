@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jane Shopping</title>
+    <link rel="stylesheet" href="style/header.css">
+    <link rel="stylesheet" href="style/skin.css">
+    <script src="../../jquery-1.12.4.js"></script>
+    <script src="script/jquery.cookie.js"></script>
+    <script src="script/header.js"></script>
+</head>
+<body>
+<div id="header">
+    <div id="header-top">
+        <div id="logo"><img src="images/logo.gif" alt=""></div>
+        <input type="text" id="search" value="请输入商品名称">
+        <!--用下种写法可以达到用js的那个功能-->
+        <!--<input type="text" id="search" placeholder="请输入商品名称">-->
+        <div id="skin-div">
+            <ul id="skin">
+                <li id="skin_side_0" class="selected" title="蓝色"></li>
+                <li id="skin_side_1" title="荧光绿"></li>
+                <li id="skin_side_2" title="橙黄色"></li>
+                <li id="skin_side_3" title="天蓝色"></li>
+                <li id="skin_side_4" title="粉红色"></li>
+                <li id="skin_side_5" title="紫色"></li>
+            </ul>
+        </div>
+    </div>
+    <div id="header-bottom" class="skin_0">
+        <ul id="header-nav">
+            <li><a href="#">首页</a></li>
+            <li><a href="#">品牌</a></li>
+            <li><a href="#">女装</a></li>
+            <li><a href="#">男装</a></li>
+            <li><a href="#">鞋包服饰</a></li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
