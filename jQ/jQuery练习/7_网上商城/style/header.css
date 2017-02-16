@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul, li {
+    list-style: none;
+}
+
+#header {
+    width: 100%;
+    height: 105px;
+    background: url("../images/headerbg.png") repeat;
+}
+
+#header-top {
+    margin: 0 auto;
+    width: 990px;
+    height: 68px;
+    position: relative;
+}
+/*logo样式*/
+#logo{
+    margin-left: 10px;
+    color:#FFF;
+    float: left;
+}
+/*搜索样式*/
+#search{
+    float: left;
+    position: absolute;
+    top: 20px;
+    left: 198px;
+    color: #999999;
+    font-size: 14px;
+    height: 17px;
+    padding: 3px 6px 5px 6px;
+    width: 200px;
+}
+/*切换皮肤样式*/
+#header-top #skin-div {
+    float: right;
+    width: 150px;
+    height: 45px;
+}
+
+#skin {
+    margin: 15px auto;
+    width: 120px;
+    height: 15px;
+}
+
+#skin li {
+    width: 15px;
+    height: 15px;
+    margin-right: 4px;
+    cursor: pointer;
+    float: left;
+    border-radius: 3px;
+    background-image: url("../images/theme.gif");
+}
+#skin_side_0 {
+    background-position: 0 0;
+}
+#skin_side_1 {
+    background-position: -20px 0;
+}
+#skin_side_2 {
+    background-position: -40px 0;
+}
+#skin_side_3 {
+    background-position: -60px 0;
+}
+#skin_side_4 {
+    background-position: -80px 0;
+}
+#skin_side_5 {
+    background-position: -100px 0;
+}
+#skin_side_0.selected{
+    background-position: 0 -15px;
+}
+#skin_side_1.selected{
+    background-position: -20px -15px;
+}
+#skin_side_2.selected{
+    background-position: -40px -15px;
+}
+#skin_side_3.selected{
+    background-position: -60px -15px;
+}
+#skin_side_4.selected{
+    background-position: -80px -15px;
+}
+#skin_side_5.selected{
+    background-position: -100px -15px;
+}
+/*导航样式*/
+#header-bottom {
+    margin: 0 auto;
+    width: 990px;
+    height: 37px;
+}
+#header-nav{
+    margin-left: 25px;
+    color: white;
+
+}
+#header-nav li{
+    float: left;
+}
