@@ -1,0 +1,40 @@
+html,body{
+    width: 100%;
+    height: 100%;
+}
+.container{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+.mask{
+    width: 100%;
+    height: 100%;
+    background-color: black;
+    opacity: 0.3;
+    filter: alpha(opacity=30);
+}
+.demo-content{
+    width: 400px;
+    height: 300px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    margin-left: -200px;
+    top: 50%;
+    margin-top: -150px;
+}
+.demo-title{
+    height: 30px;
+    line-height: 30px;
+    background: #ccc;
+    padding: 0 10px;
+}
+.title-left{
+    float: left;
+}
+.title-right{
+    float: right;
+}
