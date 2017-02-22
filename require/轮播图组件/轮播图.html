@@ -3,87 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <style>
-        *{
-            margin: 0;
-            padding: 0;
-        }
-        ul{
-            list-style: none;
-        }
-        .container{
-            width: 680px;
-            height: 344px;
-            background-color: aquamarine;
-            margin: 70px auto;
-            position: relative;
-            overflow: hidden;
-        }
-        .tab{
-            position: absolute;
-            right: 10px;
-            bottom: 10px;
-            z-index: 1;
-        }
-        .tab li{
-            float: left;
-            width: 20px;
-            height: 20px;
-            background-color: black;
-            color: white;
-            margin-right: 5px;
-            text-align: center;
-            line-height: 20px;
-            cursor: pointer;
-        }
-        .tab .selected{
-            background-color: orange;
-        }
-        .content{
-            position: absolute;
-            left: 0;
-        }
-        .content img{
-            float: left;
-        }
-        .arrow{
-            position: absolute;
-            z-index: 1;
-            width: 100%;
-        }
-        .arrow span{
-            background-color: black;
-            color: white;
-            float: left;
-            width: 20px;
-            height: 20px;
-            margin-right: 5px;
-            line-height: 20px;
-            text-align: center;
-            cursor: pointer;
-        }
-    </style>
+    <link rel="stylesheet" href="css/banner.css">
 </head>
 <body>
-<!--<div class="container">-->
-    <!--<div class="arrow">-->
-        <!--<span class="left">&lt;</span>-->
-        <!--<span class="right">&gt;</span>-->
-    <!--</div>-->
-    <!--<ul class="tab">-->
-        <!--<li class="selected">1</li>-->
-        <!--<li>2</li>-->
-        <!--<li>3</li>-->
-        <!--<li>4</li>-->
-    <!--</ul>-->
-    <!--<div class="content">-->
-        <!--<img src="image/1.jpg" >-->
-        <!--<img src="image/2.jpg" >-->
-        <!--<img src="image/3.jpg" >-->
-        <!--<img src="image/4.jpg" >-->
-    <!--</div>-->
-<!--</div>-->
 <button id="button">click</button>
-<script src="../require.js" data-main="demo"></script>
+<script src="../require.js" data-main="js/demo"></script>
 </body>
 </html>
