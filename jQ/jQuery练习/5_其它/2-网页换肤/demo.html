@@ -63,11 +63,6 @@
         }
 
     });
-    $('li').on('click',function(){
-        $(this).addClass('selected').siblings().removeClass('selected');
-        $('h1').attr('class','title').addClass($(this).attr('id'));
-        $.cookie( "MyCssSkin" ,  $(this).attr('id') , {expires: 10 });
-    });
 
 </script>
 </body>
