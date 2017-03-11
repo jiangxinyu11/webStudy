@@ -1,0 +1,17 @@
+$color: #ff0000;
+body{
+    width: 100%;
+    background-color: $color;
+    #container{
+        background-color: #778833;
+    }
+    .r{
+        color: #222;
+        background-color: #222;
+        width: 100px;
+    }
+    .s{
+        color: #DDDDDD;
+        width: 12px;
+    }
+}
