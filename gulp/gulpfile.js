@@ -11,4 +11,4 @@ gulp.task('default',['test','test2']);
 gulp.task('test1',function () {
     gulp.src('index.html');
 });
-
+gulp.task
